@@ -147,7 +147,7 @@ body {
     padding: 10px;
     text-align:center;
     color:#161616;
-    /* min-width: 120px; */
+    min-width: 100px;
     transition: all 0.3s ease; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
@@ -155,6 +155,7 @@ body {
 .mainmenuitemnotactive:active {
     transform: translateY(1px); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    min-width: 100px;
 }
 
 .mainmenubtn__img{
