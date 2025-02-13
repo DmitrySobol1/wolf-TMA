@@ -1,6 +1,6 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// const tlgid = 4126976701
+// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+const tlgid = 4126976701
 let tryQty = 0
 
 async function checkIfFirstEnter(tlgid, tryQty = 0) {
@@ -15,7 +15,7 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
             }
         );
 
-        const data = await response.json(); // Парсим JSON
+        const data = await response.json(); 
         const payloadlength = data.payload.length;
 
         if (payloadlength === 0) {
@@ -29,9 +29,9 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
     } catch (error) {
         console.error("Ошибка запроса:", tryQty);
         
-        if (tryQty < 2) {  // Всего 3 попытки (0, 1, 2)
+        if (tryQty < 2) {  
             setTimeout(() => {
-                checkIfFirstEnter(tlgid, tryQty + 1); // Передаем увеличенное tryQty
+                checkIfFirstEnter(tlgid, tryQty + 1); 
             }, 3000);
         } else {
             document.getElementById("loader").style.display = "none";
