@@ -94,7 +94,6 @@ body {
     text-align: center;
     position: absolute;
     top: 20%; 
-    
 }
 
 
@@ -124,6 +123,7 @@ body {
     position: absolute;
     bottom: 0; 
     padding-bottom: 10px; 
+   
 }
 
 
@@ -133,7 +133,7 @@ body {
     padding: 5px;
     text-align:center;
     color:#161616;
-    /* min-width: 120px; */
+    min-width: 100px;
     border:1px solid #161616;
     transition: all 0.3s ease; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
@@ -165,4 +165,80 @@ body {
 
 .mainmenubtn__text {
     font-weight: bold;
+}
+
+
+
+/* .mainspacegame{
+    background-color: #1f1f1f;
+    width: 100%;
+    height: calc(100vh - 41px);
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px; 
+    position: absolute;
+    top: 2px;
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+} */
+
+.game__score{
+    /* width: 70%; */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 10%; 
+}
+
+.game__energy{
+    /* width: 70%; */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 15%; 
+}
+
+
+.game__clickelement{
+    /* width: 100%; */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 25%; 
+}
+
+/* .wolfimg{
+    width: 400px; 
+    height: auto;
+} */
+
+@media (max-width: 249px) {
+    .wolfimg {
+        width: 200px; 
+        height: auto;
+    }
+}
+
+@media (min-width: 250px) and (max-width: 300px) {
+    .wolfimg {
+        width: 200px; 
+        height: auto;
+    }
+}
+
+@media (min-width: 301px) and (max-width: 380px) {
+    .wolfimg {
+        width: 300px; 
+        height: auto;
+    }
+}
+
+@media (min-width: 381px) {
+    .wolfimg {
+        width: 400px; 
+        height: auto;
+    }
 }
