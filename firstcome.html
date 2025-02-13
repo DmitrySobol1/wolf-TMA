@@ -9,25 +9,37 @@
 </head>
 <body>
 
-    <div class='container' id = 'container'>
-        <div class="blur" id="blur">
+    <div class='containerfc' id = 'containerfc'>
+        <div class="blurfc" id="blurfc">
 
-            <div class='mainspace' id = 'mainspace'>
+            <div class='mainspacefc' id = 'mainspacefc'>
                 
-                <div class = 'popupfirstcome' id = 'popup'>
-                    <div id="popupfirstcome__text">
+                <div class='popupfc' id = 'popupfc'>
+                    <div id="popupfc__text">
                         Забирай бонусные 1000 баллов и приступай к игре
                     </div>
-                    <div id="popupfirstcome__btndiv">
-                        <button class='popupfirstcome__btn'>забрать бонус</button>
+                    <div id="popupfc__btndiv">
+                        <button class='popupfc__btn'>забрать бонус</button>
                     </div>
-
                 </div>
 
-                <div id="mainmenubtn">
-                    <div id="mainmenubtn__btn1"></div>
-                    <div id="mainmenubtn__btn2"></div>
-                    <div id="mainmenubtn__btn3"></div>
+                <div class='mainmenubtn' id="mainmenubtn">
+                    
+                    <div class='mainmenuitemactive' id="mainmenubtn__btn1">
+                        <div id = 'mainmenubtn__btn1__img'><img src="./assets/game.png" alt="game img" class="mainmenubtn__img"></div>
+                        <div id = 'mainmenubtn__btn1__text' class="mainmenubtn__text">ИГРАТЬ</div>
+                    </div>
+
+                    <div class='mainmenuitemnotactive' id="mainmenubtn__btn2">
+                        <div id= 'mainmenubtn__btn2__img'><img src="./assets/friend.png" alt="game img" class="mainmenubtn__img"></div>
+                        <div id= 'mainmenubtn__btn2__text' class="mainmenubtn__text">ДРУЗЬЯ</div>
+                    </div>
+
+                    <div class='mainmenuitemnotactive' id="mainmenubtn__btn3">
+                        <div id='mainmenubtn__btn3__img'><img src="./assets/echange.png" alt="game img" class="mainmenubtn__img"></div>
+                        <div id='mainmenubtn__btn3__text' class="mainmenubtn__text">ОБМЕН</div>   
+                    </div>
+
                 </div>
             
             </div>
