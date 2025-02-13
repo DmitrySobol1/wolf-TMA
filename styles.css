@@ -11,6 +11,7 @@ button,input {
     border:none;
     outline: none;
     background: none;
+    font-family:Montserrat;
 }
 
 body {
@@ -61,23 +62,65 @@ body {
 .blur {
     position: absolute;
     top: 39px;
-    background-color: #d49000;
+    background-color: #ffc843;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 100%;
     height: calc(100vh - 39px);
-    overflow: hidden; /* Чтобы псевдоэлемент не выходил за пределы родителя */
-    z-index: 1; /* Убедитесь, что родительский элемент находится поверх псевдоэлемента */
 }
 
 
 .mainspace{
     background-color: #1f1f1f;
     width: 100%;
-    height: calc(100vh - 42px);
+    height: calc(100vh - 41px);
     border-top-left-radius: 20px; 
     border-top-right-radius: 20px; 
     position: absolute;
-    top: 3px;
+    top: 2px;
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
     
+}
+
+.popupfirstcome{
+    background-color: #ffc843;
+    width: 70%;
+    border-radius: 10px;
+    padding: 15px;
+    color:#161616;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* .popupfirstcome__btn{
+background-color: #d49000;
+border: 2px solid #161616;
+border-radius: 5px;
+padding: 10px 30px;
+margin-top: 20px;
+margin-bottom: 5px;
+font-size: 16px;
+} */
+
+.popupfirstcome__btn {
+    background-color: #d49000;
+    border: 2px solid #161616;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #fff; /* Цвет текста */
+    font-weight: bold;
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /
+}
+
+.popupfirstcome__btn:active {
+    transform: translateY(1px); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
