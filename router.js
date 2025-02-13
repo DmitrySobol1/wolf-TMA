@@ -23,7 +23,7 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
             
         } else if (payloadlength === 1) {
             console.log('существует');
-            window.location.href = "/game.html";
+            window.location.href = "game.html";
         }
 
     } catch (error) {
@@ -68,7 +68,7 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
 
         const data = await response.json(); 
         console.log(data); 
-        window.location.href = "/firstcome.html"; 
+        window.location.href = "firstcome.html"; 
 
     } catch (error) {
         console.error("Ошибка при создании пользователя:", error);
