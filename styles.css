@@ -408,7 +408,7 @@ body {
 
 /* всплыващее окно */
 /* Стили для кнопки */
-#openModalBtn {
+.openModalBtn {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #d49000;
@@ -419,7 +419,7 @@ body {
     transition: background 0.3s;
 }
 
-#openModalBtn:hover {
+.openModalBtn:hover {
     background-color: #b37800;
 }
 

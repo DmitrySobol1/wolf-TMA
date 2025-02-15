@@ -10,7 +10,7 @@ const mainmenubtn__btn1 = document.getElementById('mainmenubtn__btn1').addEventL
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
+
     const openBtn = document.getElementById("openModalBtn");
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close-btn");
@@ -31,4 +31,4 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.classList.remove("show");
         }
     });
-});
+
