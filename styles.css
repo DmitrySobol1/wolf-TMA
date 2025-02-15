@@ -80,7 +80,6 @@ body {
     display: flex;
     justify-content: center;  
     align-items: center; 
-    
 }
 
 .popupfc{
@@ -215,10 +214,6 @@ body {
     top: 25%; 
 }
 
-/* .wolfimg{
-    width: 400px; 
-    height: auto;
-} */
 
 @media (max-width: 249px) {
     .wolfimg {
@@ -264,4 +259,146 @@ body {
 
 .game__energy__energytext{
     margin-right: 5px; 
+}
+
+
+.friend__space {
+    position: absolute;
+    top: 10%; 
+}
+
+
+.friend__title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.friend__subtitle {
+    margin-bottom: 20px;
+} 
+
+.friend__info {
+    display: flex;
+    background-color: #848484;
+    padding: 10px;
+    border-radius: 5px;
+    color:#161616;
+    margin-bottom: 40px;
+    align-items: center; 
+    gap:10px;
+}
+
+
+.friend__info__left_img {
+    width:35px;
+    height:35px;
+}
+
+
+.friend__btnaddfriend {
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background-color: #ffc843; 
+    border: 2px solid #FFF; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold;
+    color: #1f1f1f; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.friend__btnaddfriend:hover {
+    background-color: #d49000;
+}
+
+.friend__btnaddfriend__icon {
+    width: 25px;
+    height: 25px;
+    fill: none; 
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+
+
+.change__space {
+    position: absolute;
+    top: 10%; 
+}
+
+
+.change__title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.change__subtitle {
+    margin-bottom: 20px;
+} 
+
+.change__info {
+    display: flex;
+    background-color: #848484;
+    padding: 10px;
+    border-radius: 5px;
+    color:#161616;
+    margin-bottom: 40px;
+    align-items: center; 
+    gap:10px;
+}
+
+
+.change__info__left_img {
+    width:35px;
+    height:35px;
+}
+
+
+.change__btnchange {
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background-color: #ffc843; 
+    border: 2px solid #FFF; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold;
+    color: #1f1f1f; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.change__btnchange:hover {
+    background-color: #d49000;
+}
+
+.change__btnchange__icon {
+    width: 20px;
+    height: 20px;
+    fill: none; 
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+
+.change__underdevelop {
+    display: flex;
+    background-color: salmon;
+    padding: 10px;
+    border-radius: 5px;
+    color:#161616;
+    margin-bottom: 40px;
+    align-items: center; 
+    gap:10px;  
+    margin-top: 150px;
 }
