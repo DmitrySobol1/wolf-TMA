@@ -463,3 +463,12 @@ body {
 .modal.show {
     bottom: 0;
 }
+
+
+.clickbtn{
+    /* margin-top: 250px; */
+    color:white;
+    background-color: salmon;
+    padding: 20px;
+    border-radius: 10px;
+}
