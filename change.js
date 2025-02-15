@@ -30,10 +30,10 @@ closeModalBtn.addEventListener("click", function () {
         modal.classList.remove("show");
 });
 
-// Закрытие по клику вне окна
+//Закрытие по клику по любому месту модального окна
 document.addEventListener("click", function (event) {
-       if (event.target === modal) {
-            modal.classList.remove("show");
-        }
-});
+    if (event.target.dataset.name == 'modalwindow'){    
+    modal.classList.remove("show");
+    }
+})
 

@@ -5,8 +5,8 @@ const tlgid = 777
 let initialScore 
 const saveqty = 10000;
 
-const level1 = 1030
-const level2 = 1050
+const level1 = 120
+const level2 = 150
 
 
 // Всплывающее окно с информацией
@@ -47,6 +47,7 @@ function setScore(value){
 
 // Клик
 document.getElementById('clickbtn').addEventListener('click',()=>{
+    console.log ('clickbtn')
     const scoreelement = document.getElementById('game__score__figures')
     let scoreelementvalue = Number(scoreelement.textContent)
     scoreelementvalue++
@@ -55,7 +56,6 @@ document.getElementById('clickbtn').addEventListener('click',()=>{
     setWolfImg(scoreelementvalue)
     console.log ('initial=',initialScore,' currentScore=',scoreelementvalue);
     if (scoreelementvalue === level1 || scoreelementvalue === level2  ){
-        console.log ("congratulate")
         congratulate();
     }
     if (scoreelementvalue-initialScore>= saveqty ){
@@ -173,7 +173,7 @@ closeModalBtn.addEventListener("click", function () {
         modal.classList.remove("show");
 });
 
-// // Закрытие по клику по любому месту модального окна
+//Закрытие по клику по любому месту модального окна
 document.addEventListener("click", function (event) {
 if (event.target.dataset.name == 'modalwindow'){    
 modal.classList.remove("show");
