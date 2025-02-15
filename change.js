@@ -7,21 +7,25 @@ const mainmenubtn__btn1 = document.getElementById('mainmenubtn__btn1').addEventL
         window.location.href = "friend.html";
 })
 
+const titleForModalChange = 'Здесь вы можете обменять баллы на монеты';
+const descriptionForModalChange = 'Данный раздел сейчас находится в разработке';
 
 
 
 
-    const openBtn = document.getElementById("openModalBtn");
+    const openModalBtn = document.getElementById("infoiconchange");
     const modal = document.getElementById("modal");
-    const closeBtn = document.querySelector(".close-btn");
+    const closeModalBtn = document.querySelector(".close-btn");
 
     // Открытие окна
-    openBtn.addEventListener("click", function () {
+    openModalBtn.addEventListener("click", function () {
+        const title = document.getElementById('modaltitle').textContent = titleForModalChange
+        const description = document.getElementById('modaldescription').textContent = descriptionForModalChange
         modal.classList.add("show");
     });
 
     // Закрытие окна
-    closeBtn.addEventListener("click", function () {
+    closeModalBtn.addEventListener("click", function () {
         modal.classList.remove("show");
     });
 
