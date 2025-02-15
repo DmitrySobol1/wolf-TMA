@@ -3,7 +3,19 @@
 const tlgid = 777
 
 let initialScore 
-const saveqty = 10;
+const saveqty = 10000;
+
+const level1 = 1030
+const level2 = 1050
+
+
+// Всплывающее окно с информацией
+const titleForModalChange = 'Кликайте на волка - зарабатывайте баллы';
+const descriptionForModalChange = 'Баллы можно обменять на реальные монеты';
+const openModalBtn = document.getElementById("infoiconchange");
+const modal = document.getElementById("modal");
+const closeModalBtn = document.querySelector(".close-btn");
+
 
 getScore()
     
@@ -13,19 +25,39 @@ function getScore(){
         const value = localStorage.getItem('score')
         scoreelement.textContent = value;
         initialScore = Number(value)
+        setWolfImg(initialScore)
+
+}
+
+function setWolfImg(value) {
+    const wolfimg = document.getElementById('clickelement');
+    
+    if (value >= level2) {
+        wolfimg.src = 'assets/wolf3.png';
+    } else if (value >= level1) {
+        wolfimg.src = 'assets/wolf2.png';
+    } else {
+        wolfimg.src = 'assets/wolf1.png';
+    }
 }
 
 function setScore(value){
     localStorage.setItem('score',value)
 }
 
+// Клик
 document.getElementById('clickbtn').addEventListener('click',()=>{
     const scoreelement = document.getElementById('game__score__figures')
     let scoreelementvalue = Number(scoreelement.textContent)
     scoreelementvalue++
     scoreelement.textContent = scoreelementvalue
     setScore(scoreelementvalue)
-    console.log ('initial=',initialScore,' currentScore=',scoreelementvalue)
+    setWolfImg(scoreelementvalue)
+    console.log ('initial=',initialScore,' currentScore=',scoreelementvalue);
+    if (scoreelementvalue === level1 || scoreelementvalue === level2  ){
+        console.log ("congratulate")
+        congratulate();
+    }
     if (scoreelementvalue-initialScore>= saveqty ){
         // сохранение в БД
         saveToDB(scoreelementvalue,initialScore);
@@ -126,18 +158,13 @@ async function saveToDB(currentvalue, initialvalue) {
 
 
 
-    // Всплывающее окно с информацией
-const titleForModalChange = 'Кликайте на волка - зарабатывайте баллы';
-const descriptionForModalChange = 'Баллы можно обменять на реальные монеты';
 
-const openModalBtn = document.getElementById("infoiconchange");
-const modal = document.getElementById("modal");
-const closeModalBtn = document.querySelector(".close-btn");
 
 // Открытие окна
 openModalBtn.addEventListener("click", function () {
-        const title = document.getElementById('modaltitle').textContent = titleForModalChange
-        const description = document.getElementById('modaldescription').textContent = descriptionForModalChange
+    console.log ('clicked')
+        document.getElementById('modaltitle').textContent = titleForModalChange
+        document.getElementById('modaldescription').textContent = descriptionForModalChange
         modal.classList.add("show");
 });
 
@@ -146,9 +173,16 @@ closeModalBtn.addEventListener("click", function () {
         modal.classList.remove("show");
 });
 
-// Закрытие по клику вне окна
+// // Закрытие по клику по любому месту модального окна
 document.addEventListener("click", function (event) {
-       if (event.target === modal) {
-            modal.classList.remove("show");
-        }
-});
+if (event.target.dataset.name == 'modalwindow'){    
+modal.classList.remove("show");
+}
+    })
+
+
+function congratulate(){
+    document.getElementById('modaltitle').textContent = 'Поздравляем!'
+    document.getElementById('modaldescription').textContent = 'Вы достигли нового уровня'
+    modal.classList.add("show"); 
+}
