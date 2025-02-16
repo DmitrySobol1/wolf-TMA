@@ -249,20 +249,20 @@ function congratulate(){
 
 
 
-// дает выбрать контакт, но вставляет текст в поле в "inline формате поиска". БЕЗ WINDOW
-document.getElementById("refbtn").addEventListener("click", () => {
-    // Текст, который будет отправлен
-    const inviteText = "Присоединяйся к игре! Перейди по ссылке: https://t.me/your_bot?start=777";
+// // дает выбрать контакт, но вставляет текст в поле в "inline формате поиска". БЕЗ WINDOW тоже работает
+// document.getElementById("refbtn").addEventListener("click", () => {
+//     // Текст, который будет отправлен
+//     const inviteText = "Присоединяйся к игре! Перейди по ссылке: https://t.me/your_bot?start=777";
   
-    // Вызов метода для сворачивания Mini App и открытия выбора контакта
-    window.Telegram.WebApp.switchInlineQuery(inviteText, ["users"]);
-  });
+//     // Вызов метода для сворачивания Mini App и открытия выбора контакта
+//     window.Telegram.WebApp.switchInlineQuery(inviteText, ["users"]);
+//   });
 
 
-//   document.getElementById("refbtn").addEventListener("click", () => {
-//   const inviteText = "Присоединяйся к моей игре! Ссылка: https://example.com";
-// const encodedText = encodeURIComponent(inviteText);
-// const telegramLink = `tg://msg?text=${encodedText}`;
+document.getElementById("refbtn").addEventListener("click", () => {
+  const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
+const encodedText = encodeURIComponent(inviteText);
+const telegramLink = `tg://msg?text=${encodedText}`;
 
-// window.Telegram.WebApp.openTelegramLink(telegramLink); 
-// });
+window.Telegram.WebApp.openTelegramLink(telegramLink); 
+});
