@@ -38,8 +38,21 @@ document.addEventListener("click", function (event) {
 
 
 
-document.getElementById('refbtn').addEventListener('click',()=>{
-    console.log ('ref btn clicked')
-    // const inviteLink = "https://t.me/your_bot?start=777";
-    window.Telegram.WebApp.openTelegramLink('tg://msg_url?url=https://t.me/your_bot?start=777');
-})
+// document.getElementById('refbtn').addEventListener('click',()=>{
+//     console.log ('ref btn clicked')
+//     // const inviteLink = "https://t.me/your_bot?start=777";
+//     // window.Telegram.WebApp.openTelegramLink('https://t.me/your_bot?start=777');
+//     window.Telegram.WebApp.openLink('https://t.me/your_bot?start=777')
+// })
+
+
+document.getElementById("refbtn").addEventListener("click", () => {
+    // Текст, который будет отправлен
+    const inviteText = "Присоединяйся к игре! Перейди по ссылке: https://t.me/your_bot?start=777";
+  
+    // Вызов метода для сворачивания Mini App и открытия выбора контакта
+    Telegram.WebApp.switchInlineQuery(inviteText, ["users", "groups", "chats"]);
+  });
+
+
+
