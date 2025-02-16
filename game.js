@@ -245,3 +245,18 @@ function congratulate(){
     document.getElementById('modaldescription').textContent = 'Вы достигли нового уровня'
     modal.classList.add("show"); 
 }
+
+
+
+
+
+
+
+
+document.getElementById("refbtn").addEventListener("click", () => {
+    // Текст, который будет отправлен
+    const inviteText = "Присоединяйся к игре! Перейди по ссылке: https://t.me/your_bot?start=777";
+  
+    // Вызов метода для сворачивания Mini App и открытия выбора контакта
+    Telegram.WebApp.switchInlineQuery(inviteText, ["users"]);
+  });
