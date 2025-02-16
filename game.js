@@ -249,29 +249,12 @@ function congratulate(){
 
 
 
-// // дает выбрать контакт, но вставляет текст в поле в "inline формате поиска". БЕЗ WINDOW тоже работает
-// document.getElementById("refbtn").addEventListener("click", () => {
-//     // Текст, который будет отправлен
-//     const inviteText = "Присоединяйся к игре! Перейди по ссылке: https://t.me/your_bot?start=777";
-  
-//     // Вызов метода для сворачивания Mini App и открытия выбора контакта
-//     window.Telegram.WebApp.switchInlineQuery(inviteText, ["users"]);
-//   });
-
-
-// не работает
-// document.getElementById("refbtn").addEventListener("click", () => {
-//   const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
-// const encodedText = encodeURIComponent(inviteText);
-// const telegramLink = `tg://msg?text=${encodedText}`;
-
-// window.Telegram.WebApp.openTelegramLink(telegramLink); 
-// });
-
-
 document.getElementById("refbtn").addEventListener("click", () => {
-//     const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
-//   const encodedText = encodeURIComponent(inviteText);
-//   const telegramLink = `tg://msg?text=${encodedText}`;
-  window.Telegram.WebApp.openTelegramLink('https://t.me/share/url?url=https://t.me/your_bot?start=777'); 
-  });
+  const msgtxt = 'Заходи в игру и забирай 1000 баллов от меня:'
+  const msglink = 'https://telegram.me/wolf_games_bot?start=ref--12345678-eee4-4fb7-b2f4-75161f1537f6'
+  window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${msgtxt} ${msglink}`); 
+
+})
+
+
+
