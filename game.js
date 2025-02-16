@@ -9,6 +9,8 @@ const saveqty = 10000;
 const level2 = 120
 const level3 = 150
 
+localStorage.setItem('energy',15)
+
 
 // Всплывающее окно с информацией
 const titleForModalChange = 'Кликайте на волка - зарабатывайте баллы';
