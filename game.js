@@ -105,9 +105,6 @@ document.getElementById('clickbtn').addEventListener('click',()=>{
         }, 1000);
 
 
-        ////////////
-
-
         if (scoreelementvalue === level2 || scoreelementvalue === level3  ){
             congratulate();
         }
