@@ -6,8 +6,8 @@ let initialScore
 let energy
 const saveqty = 10000;
 
-const level2 = 120
-const level3 = 150
+const level2 = 1020
+const level3 = 1040
 
 
 // Всплывающее окно с информацией
