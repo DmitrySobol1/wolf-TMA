@@ -40,6 +40,6 @@ document.addEventListener("click", function (event) {
 
 document.getElementById('refbtn').addEventListener('click',()=>{
     console.log ('ref btn clicked')
-    const inviteLink = "https://t.me/your_bot?start=777";
-    window.Telegram.WebApp.openTelegramLink(`tg://msg_url?url=${encodeURIComponent(inviteLink)}`);
+    // const inviteLink = "https://t.me/your_bot?start=777";
+    window.Telegram.WebApp.openTelegramLink('https://t.me/easydev_school');
 })

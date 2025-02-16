@@ -220,34 +220,6 @@ body {
 
 
 
-/* @media (max-width: 249px) {
-    .wolfimg {
-        width: 200px; 
-        height: auto;
-    }
-}
-
-@media (min-width: 250px) and (max-width: 300px) {
-    .wolfimg {
-        width: 200px; 
-        height: auto;
-    }
-}
-
-@media (min-width: 301px) and (max-width: 380px) {
-    .wolfimg {
-        width: 300px; 
-        height: auto;
-    }
-}
-
-@media (min-width: 381px) {
-    .wolfimg {
-        width: 400px; 
-        height: auto;
-    }
-} */
-
 .game__score__moneta {
     width: 25px;
     height: 25px;
