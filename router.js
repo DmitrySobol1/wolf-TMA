@@ -103,6 +103,7 @@ async function changeRewriteEnergy() {
       const data = await response.json();
       console.log(data);
       window.location.href = "game.html";
+         
     } catch (error) {
       console.error("Ошибка при запросе:", error);
     }
