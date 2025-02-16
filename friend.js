@@ -1,3 +1,10 @@
+// В проде раскоментировать получитение id из тлг и убрать ручной ввод
+// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+const tlgid = 777
+let reflink
+
+reflinkmaker()
+
 // кнопки главного меню
 const mainmenubtn__btn1 = document.getElementById('mainmenubtn__btn1').addEventListener('click',()=>{
 window.
@@ -38,6 +45,30 @@ document.addEventListener("click", function (event) {
 
 
 
+document.getElementById("friend__btnaddfriend").addEventListener("click", () => {
+  const msgtxt = 'Заходи в игру и забирай 1000 баллов от меня:'
+  const link = `https://telegram.me/wolf_games_bot?start=${reflink}`
+//   const msglink = 'https://telegram.me/wolf_games_bot?start=ref--12345678-eee4-4fb7-b2f4-75161f1537f6'
+  window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${msgtxt} ${link}`); 
+})
+
+
+
+// document.getElementById("refbtn").addEventListener("click", () => {
+//     reflinkmaker()
+//      })
+
+
+function reflinkmaker() {
+    const temptlgid = tlgid
+    const templatelink = '12345678-ed1e-4477-8e19-1b8e71ab2689';
+    let newId = temptlgid.toString() + 'e';
+    const firstPart = newId.padEnd(8, '0').slice(0, 8); 
+    const secondPart = newId.padEnd(12, '0').slice(8, 12); 
+    const thirdPart = templatelink.split('-').slice(2).join('-');
+    const reflink = `${firstPart}-${secondPart}-${thirdPart}`;
+    console.log(reflink);
+}
 
 
 

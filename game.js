@@ -249,12 +249,8 @@ function congratulate(){
 
 
 
-document.getElementById("refbtn").addEventListener("click", () => {
-  const msgtxt = 'Заходи в игру и забирай 1000 баллов от меня:'
-  const msglink = 'https://telegram.me/wolf_games_bot?start=ref--12345678-eee4-4fb7-b2f4-75161f1537f6'
-  window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${msgtxt} ${msglink}`); 
 
-})
+
 
 
 
