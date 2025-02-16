@@ -259,10 +259,19 @@ function congratulate(){
 //   });
 
 
-document.getElementById("refbtn").addEventListener("click", () => {
-  const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
-const encodedText = encodeURIComponent(inviteText);
-const telegramLink = `tg://msg?text=${encodedText}`;
+// не работает
+// document.getElementById("refbtn").addEventListener("click", () => {
+//   const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
+// const encodedText = encodeURIComponent(inviteText);
+// const telegramLink = `tg://msg?text=${encodedText}`;
 
-window.Telegram.WebApp.openTelegramLink(telegramLink); 
-});
+// window.Telegram.WebApp.openTelegramLink(telegramLink); 
+// });
+
+
+document.getElementById("refbtn").addEventListener("click", () => {
+//     const inviteText = "Присоединяйся к моей игре! Ссылка: https://t.me/your_bot?start=777";
+//   const encodedText = encodeURIComponent(inviteText);
+//   const telegramLink = `tg://msg?text=${encodedText}`;
+  window.Telegram.WebApp.openTelegramLink('https://t.me/share/url?url=https://t.me/your_bot?start=777'); 
+  });
