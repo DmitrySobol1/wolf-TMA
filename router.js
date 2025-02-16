@@ -22,8 +22,14 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
              createNew(tlgid);
             
         } else if (payloadlength === 1) {
-            console.log('существует');
-            window.location.href = "game.html";
+            if (data.payload[0].canRewriteEnergy == false){
+                localStorage.setItem('energy',1000)
+                changeRewriteEnergy()
+            } else {
+                window.location.href = "game.html";
+            }
+            
+            
         }
 
     } catch (error) {
@@ -74,3 +80,30 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
         console.error("Ошибка при создании пользователя:", error);
     }
 }
+
+
+
+async function changeRewriteEnergy() {
+    try {
+      const response = await fetch('https://api.directual.com/good/api/v5/data/rqsttochangevariablecanrewriteenergy/rqstChangeRewriteEnergy?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=', {
+        method: 'POST',
+        body: JSON.stringify({
+          'uid': tlgid,
+          'isOperated':false
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Ошибка запроса: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log(data);
+      window.location.href = "game.html";
+    } catch (error) {
+      console.error("Ошибка при запросе:", error);
+    }
+  }

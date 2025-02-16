@@ -3,10 +3,11 @@
 const tlgid = 777
 
 let initialScore 
+let energy
 const saveqty = 10000;
 
-const level1 = 120
-const level2 = 150
+const level2 = 120
+const level3 = 150
 
 
 // Всплывающее окно с информацией
@@ -25,6 +26,12 @@ function getScore(){
         const value = localStorage.getItem('score')
         scoreelement.textContent = value;
         initialScore = Number(value)
+
+        const energyelement = document.getElementById('game__energy__currentlevel')
+        const valueenergy = localStorage.getItem('energy')
+        energyelement.textContent = valueenergy;
+        energy = Number(valueenergy)
+
         setWolfImg(initialScore)
 
 }
@@ -32,35 +39,52 @@ function getScore(){
 function setWolfImg(value) {
     const wolfimg = document.getElementById('clickelement');
     
-    if (value >= level2) {
+    if (value >= level3) {
         wolfimg.src = 'assets/wolf3.png';
-    } else if (value >= level1) {
+    } else if (value >= level2) {
         wolfimg.src = 'assets/wolf2.png';
     } else {
         wolfimg.src = 'assets/wolf1.png';
     }
 }
 
-function setScore(value){
-    localStorage.setItem('score',value)
+function setScore(score,energy){
+    localStorage.setItem('score',score)
+    localStorage.setItem('energy',energy)
 }
 
 // Клик
 document.getElementById('clickbtn').addEventListener('click',()=>{
-    console.log ('clickbtn')
-    const scoreelement = document.getElementById('game__score__figures')
-    let scoreelementvalue = Number(scoreelement.textContent)
-    scoreelementvalue++
-    scoreelement.textContent = scoreelementvalue
-    setScore(scoreelementvalue)
-    setWolfImg(scoreelementvalue)
-    console.log ('initial=',initialScore,' currentScore=',scoreelementvalue);
-    if (scoreelementvalue === level1 || scoreelementvalue === level2  ){
-        congratulate();
-    }
-    if (scoreelementvalue-initialScore>= saveqty ){
-        // сохранение в БД
-        saveToDB(scoreelementvalue,initialScore);
+    
+    const energyelement = document.getElementById('game__energy__currentlevel')
+    let energyelementvalue = Number(energyelement.textContent)
+
+    if (energyelementvalue <=0){
+        console.log ('отриц энергия')
+        document.getElementById('modaltitle').textContent = 'Энергия закончилась'
+        document.getElementById('modaldescription').textContent = 'Обнуление энергии произойдет в 00:00мск'
+        modal.classList.add("show");
+    } else {    
+        energyelementvalue--
+        energyelement.textContent = energyelementvalue
+
+        const scoreelement = document.getElementById('game__score__figures')
+        let scoreelementvalue = Number(scoreelement.textContent)
+        scoreelementvalue++
+        scoreelement.textContent = scoreelementvalue
+
+        setScore(scoreelementvalue,energyelementvalue)
+        setWolfImg(scoreelementvalue)
+        console.log ('initial=',initialScore,' currentScore=',scoreelementvalue);
+
+        if (scoreelementvalue === level2 || scoreelementvalue === level3  ){
+            congratulate();
+        }
+
+        if (scoreelementvalue-initialScore>= saveqty ){
+            // сохранение в БД
+            saveToDB(scoreelementvalue,initialScore,energyelementvalue);
+        }
     }
 })
 
@@ -94,14 +118,15 @@ document.getElementById('clickbtn').addEventListener('click',()=>{
     
 
 
-async function saveToDB(currentvalue, initialvalue) {
+async function saveToDB(currentvalue, initialvalue,energyvalue) {
     try {
         const response = await fetch('https://api.directual.com/good/api/v5/data/rqsttosavescore/rqstSaveScore?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=', {
             method: 'POST',
             body: JSON.stringify({
                 'score': currentvalue,
                 'uid': tlgid,
-                'isOperated': false
+                'isOperated': false,
+                'energy':energyvalue
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -123,6 +148,12 @@ async function saveToDB(currentvalue, initialvalue) {
             console.log ('пнх')
              // document.getElementById('scoreElement').innerText = initialvalue; // Обновляем UI
             // localStorage.setItem('score', initialvalue); // Возвращаем старое значение в Local Storage
+        } else if (data.result === 'refreshenergy') {
+            console.log (data.result)
+            initialScore = currentvalue 
+            localStorage.setItem('energy',1000)
+            const energyelement = document.getElementById('game__energy__currentlevel')
+            energyelement.textContent = 1000
         }
 
 

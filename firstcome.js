@@ -10,4 +10,5 @@ giveBonus()
 
 function giveBonus(){
     localStorage.setItem('score',1000)
+    localStorage.setItem('energy',1000)
 }
