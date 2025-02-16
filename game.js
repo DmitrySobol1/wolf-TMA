@@ -77,6 +77,37 @@ document.getElementById('clickbtn').addEventListener('click',()=>{
         setWolfImg(scoreelementvalue)
         console.log ('initial=',initialScore,' currentScore=',scoreelementvalue);
 
+
+        ////// + 1 элемент
+
+        // Создаем элемент "+1"
+        const plusOdin = document.createElement('div');
+        plusOdin.textContent = '+1';
+        plusOdin.classList.add('game__click__plusodin');
+
+        // Устанавливаем позицию "+1" относительно клика
+        const rect = clickbtn.getBoundingClientRect();
+        plusOdin.style.left = `${event.clientX - rect.left - 1}px`;
+        plusOdin.style.top = `${event.clientY - rect.top - 1}px`;
+
+        // Добавляем "+1" внутрь элемента
+        clickbtn.appendChild(plusOdin);
+
+        // Запускаем анимацию (поднимаем вверх и уменьшаем прозрачность)
+        setTimeout(() => {
+            plusOdin.style.transform = 'translateY(-20px)';
+            plusOdin.style.opacity = '0';
+        }, 10);
+
+        // Удаляем "+1" через 1 сек
+        setTimeout(() => {
+            plusOdin.remove();
+        }, 1000);
+
+
+        ////////////
+
+
         if (scoreelementvalue === level2 || scoreelementvalue === level3  ){
             congratulate();
         }
