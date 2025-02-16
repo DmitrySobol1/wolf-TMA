@@ -66,7 +66,7 @@ function reflinkmaker() {
     const firstPart = newId.padEnd(8, '0').slice(0, 8); 
     const secondPart = newId.padEnd(12, '0').slice(8, 12); 
     const thirdPart = templatelink.split('-').slice(2).join('-');
-    const reflink = `${firstPart}-${secondPart}-${thirdPart}`;
+    reflink = `${firstPart}-${secondPart}-${thirdPart}`;
     console.log(reflink);
 }
 
