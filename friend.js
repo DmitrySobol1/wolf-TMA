@@ -1,6 +1,6 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-const tlgid = 777
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+// const tlgid = 777
 let reflink
 
 reflinkmaker()
@@ -52,11 +52,6 @@ document.getElementById("friend__btnaddfriend").addEventListener("click", () => 
   window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${msgtxt} ${link}`); 
 })
 
-
-
-// document.getElementById("refbtn").addEventListener("click", () => {
-//     reflinkmaker()
-//      })
 
 
 function reflinkmaker() {
