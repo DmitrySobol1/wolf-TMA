@@ -1,6 +1,9 @@
-// // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-const tlgid = 777
+// router backup
+
+
+// В проде раскоментировать получитение id из тлг и убрать ручной ввод
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+// const tlgid = 777
 let tryQty = 0
 
 async function checkIfFirstEnter(tlgid, tryQty = 0) {
@@ -22,13 +25,13 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
              createNew(tlgid);
             
         } else if (payloadlength === 1) {
-            // if (data.payload[0].canRewriteEnergy == false){
-            //     localStorage.setItem('energy',1000)
-            //     changeRewriteEnergy()
-            // } else {
-            //     window.location.href = "game.html";
-            // }
-            checkUserInfo(tlgid,data.payload[0].canRewriteEnergy,data.payload[0].isNeedPlusScore);
+            if (data.payload[0].canRewriteEnergy == false){
+                localStorage.setItem('energy',1000)
+                changeRewriteEnergy()
+            } else {
+                window.location.href = "game.html";
+            }
+            
             
         }
 
@@ -82,36 +85,6 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
 }
 
 
-async function checkUserInfo(tlg,energy,score) {
-        const promises = [];
-
-        if (energy === false) {
-            localStorage.setItem('energy', 1000);
-            promises.push(changeRewriteEnergy()); // Добавляем в массив промисов
-            console.log ('энергии добавил')
-        }
-
-        if (score === true) {
-            const currentscore = localStorage.getItem('score');
-            let newscore = Number(currentscore) + 500;
-            localStorage.setItem('score', newscore);
-            promises.push(changeNeedPlusScore()); // Добавляем в массив промисов
-            console.log ('баллов добавил')
-        }
-
-        await Promise.all(promises); // Дожидаемся выполнения всех запросов
-        // console.log ('редирект на game')
-        window.location.href = "game.html"; // Делаем редирект только после завершения запросов
-    
-}
-
-
-
-
-
-
-
-
 
 async function changeRewriteEnergy() {
     try {
@@ -132,7 +105,7 @@ async function changeRewriteEnergy() {
   
       const data = await response.json();
       console.log(data);
-    //   window.location.href = "game.html";
+      window.location.href = "game.html";
          
     } catch (error) {
       console.error("Ошибка при запросе:", error);
@@ -142,28 +115,21 @@ async function changeRewriteEnergy() {
 
 
 
-  async function changeNeedPlusScore() {
-    try {
-      const response = await fetch('https://api.directual.com/good/api/v5/data/rqsttochangevariableisneedplusscore/rqstChangeNeedPlusScore?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=', {
-        method: 'POST',
-        body: JSON.stringify({
-          'uid': tlgid,
-          'isOperated':false
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Ошибка запроса: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log(data);
-    //   window.location.href = "game.html";
-         
-    } catch (error) {
-      console.error("Ошибка при запросе:", error);
+
+
+//   тесты
+
+else if (payloadlength === 1) {
+    if (data.payload[0].canRewriteEnergy == false){
+        localStorage.setItem('energy',1000)
+        changeRewriteEnergy()
+    } if (data.payload[0].isNeedPlusScore == true){
+        const currentscore = localStorage.getItemItem('score')
+        let newscore = Number(currentscore)+500
+        localStorage.setItem('score',newscore)
+        changeNeedPlusScore()
     }
-  }
+    
+    window.location.href = "game.html";
+    
+}

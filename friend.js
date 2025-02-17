@@ -1,6 +1,6 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// const tlgid = 777
+// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+const tlgid = 777
 let reflink
 
 reflinkmaker()
