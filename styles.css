@@ -316,6 +316,11 @@ body {
     margin:10px 0px;
 }
 
+.friend__listdiv_items {
+    height:150px;
+    overflow: auto; /* Включает прокрутку, если контент выходит за границы */
+}
+
 
 .change__space {
     position: absolute;
