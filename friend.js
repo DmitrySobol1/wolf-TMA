@@ -1,6 +1,6 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-const tlgid = 777
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+// const tlgid = 777
 let reflink
 
 reflinkmaker()
@@ -62,8 +62,40 @@ function reflinkmaker() {
     const secondPart = newId.padEnd(12, '0').slice(8, 12); 
     const thirdPart = templatelink.split('-').slice(2).join('-');
     reflink = `${firstPart}-${secondPart}-${thirdPart}`;
-    console.log(reflink);
 }
+
+
+
+// Вывод рефералов
+getMyReferalls()
+
+
+function getMyReferalls() {
+    
+    fetch(`https://api.directual.com/good/api/v5/data/referalpairs/getMyReferals?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=&uid=${tlgid}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json()) 
+    .then(data => {
+        const array = data.payload
+         
+        const friend__listdiv_title = document.getElementById('friend__listdiv_title');
+        friend__listdiv_title.textContent = array.length > 0 ? 'Список друзей:' : 'У вас пока нет приглашенных друзей'
+
+        const friend__listdiv_items = document.getElementById('friend__listdiv_items');
+        friend__listdiv_items.innerHTML = array
+        .map((e,index) => `<div>${index+1}. ${e.referalName}</div><hr class="friend__hr">`)
+        .join('');
+        })
+
+        .catch(error => {
+            console.error("Ошибка при запросе:", error); // Ловим и выводим ошибки
+        });
+}
+
 
 
 

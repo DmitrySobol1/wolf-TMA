@@ -290,6 +290,7 @@ body {
     transition: all 0.3s ease;
     width: 100%;
     justify-content: center;
+    margin-bottom: 60px;
 }
 
 .friend__btnaddfriend:hover {
@@ -304,6 +305,16 @@ body {
     stroke-width: 2;
 }
 
+.friend__listdiv_title {
+    margin-bottom:10px;
+    font-weight: bold;
+}
+
+.friend__hr {
+    height: 2px;        
+    background-color: #ffc843; 
+    margin:10px 0px;
+}
 
 
 .change__space {
