@@ -242,6 +242,7 @@ body {
 .friend__space {
     position: absolute;
     top: 10%; 
+    max-width: 350px;
 }
 
 
@@ -319,12 +320,14 @@ body {
 .friend__listdiv_items {
     height:150px;
     overflow: auto; /* Включает прокрутку, если контент выходит за границы */
+    /* max-width: 300px; */
 }
 
 
 .change__space {
     position: absolute;
     top: 10%; 
+    max-width: 350px;
 }
 
 
