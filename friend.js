@@ -3,6 +3,8 @@
 const tlgid = 412697670
 let reflink
 
+window.Telegram.WebApp.enableClosingConfirmation()
+
 reflinkmaker()
 
 // кнопки главного меню

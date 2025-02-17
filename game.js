@@ -2,6 +2,9 @@
 // const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
 const tlgid = 777
 
+window.Telegram.WebApp.enableClosingConfirmation()
+
+
 let initialScore 
 let energy
 const saveqty = 10000;

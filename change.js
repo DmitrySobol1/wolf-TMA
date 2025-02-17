@@ -1,3 +1,5 @@
+window.Telegram.WebApp.enableClosingConfirmation()
+
 // кнопки главного меню
 const mainmenubtn__btn1 = document.getElementById('mainmenubtn__btn1').addEventListener('click',()=>{
     window.
