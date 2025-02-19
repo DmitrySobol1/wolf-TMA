@@ -3,6 +3,13 @@ const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
 // const tlgid = 777
 let tryQty = 0
 
+
+if (Telegram.WebApp.platform == 'web' || Telegram.WebApp.platform == 'tdesktop' ) {
+  window.location.href = "nomobile.html";
+}
+
+
+
 async function checkIfFirstEnter(tlgid, tryQty = 0) {
     try {
         const response = await fetch(

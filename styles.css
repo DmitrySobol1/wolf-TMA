@@ -478,3 +478,24 @@ body {
     font-weight: bold;
     border-radius: 5px;
 }
+
+.nomobile__wrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+flex-direction: column;
+background: radial-gradient(circle,#1f1f1f, #161616);
+}
+
+.nomobile__img {
+    max-width: 400px;
+}
+
+.nomobile__title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom:40px;
+    text-align: center;
+}
+
