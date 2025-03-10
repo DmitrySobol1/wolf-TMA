@@ -1,14 +1,22 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
 // const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
 // window.Telegram.WebApp.enableClosingConfirmation()
-const tlgid = 412697670
-
+const tlgid = 412697670;
 
 setLevel();
 
 function setLevel() {
   const userLevel = document.getElementById('userLevel');
+
   userLevel.textContent = localStorage.getItem('userLevel');
+
+  if (userLevel.textContent == 1) {
+    const notAvailableOnYourLevel = document.getElementById('notAvailableOnYourLevel');
+    notAvailableOnYourLevel.style.display = 'flex';
+  } else {
+    const change__btnchangeddiv = document.getElementById('change__btnchangeddiv');
+    change__btnchangeddiv.classList.remove('nonvisible')
+  }
 }
 
 // кнопки главного меню
@@ -53,13 +61,12 @@ document.addEventListener('click', function (event) {
   }
 });
 
-
-
 // Info btn в разделе уровня
 document.getElementById('infoiconLevel').addEventListener('click', () => {
   document.getElementById('modaltitle').textContent = 'Система уровней';
-  document.getElementById('modaldescription').innerHTML =
-    `Приглашайте друзей и повышайте свой уровень: <br>
+  document.getElementById(
+    'modaldescription'
+  ).innerHTML = `Приглашайте друзей и повышайте свой уровень: <br>
     1) Уровень 1 доступен при старте игры <br>
     2) Уровень 2 открывается после приглашения 10 рефералов<br>
     <i>на данном уровне открывается возможность обмена баллов на монеты</i><br>
