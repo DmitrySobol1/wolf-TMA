@@ -506,11 +506,13 @@ background: radial-gradient(circle,#1f1f1f, #161616);
     align-items: center;
     gap:10px;
     color: #848484;
+    font-weight: bold;
 }
-.levelCircle {
+
+/* .levelCircle {
    background-color: #d49000; 
    border-radius: 50%;
-}
+} */
 
 .wolfIcon {
     width: 30px;
