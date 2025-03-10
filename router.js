@@ -37,11 +37,15 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
       // }
       const userLevel = data.payload[0].userLevel;
       localStorage.setItem('userLevel', userLevel);
-      checkUserInfo(
-        tlgid,
-        data.payload[0].canRewriteEnergy,
-        data.payload[0].isNeedPlusScore
-      );
+      
+      const isSentWalletAdress=data.payload[0].isSentWalletAdress
+      localStorage.setItem('isSentWalletAdress', isSentWalletAdress);
+      
+      const walletAdress=data.payload[0].walletAdress
+      localStorage.setItem('walletAdress', walletAdress);
+
+
+      checkUserInfo(tlgid, data.payload[0].canRewriteEnergy,data.payload[0].isNeedPlusScore);
     }
   } catch (error) {
     console.error('Ошибка запроса:', tryQty);

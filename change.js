@@ -3,6 +3,9 @@
 // window.Telegram.WebApp.enableClosingConfirmation()
 const tlgid = 412697670;
 
+
+const isSentWalletAdress = localStorage.getItem('isSentWalletAdress');
+
 setLevel();
 
 function setLevel() {
@@ -11,11 +14,15 @@ function setLevel() {
   userLevel.textContent = localStorage.getItem('userLevel');
 
   if (userLevel.textContent == 1) {
-    const notAvailableOnYourLevel = document.getElementById('notAvailableOnYourLevel');
+    const notAvailableOnYourLevel = document.getElementById(
+      'notAvailableOnYourLevel'
+    );
     notAvailableOnYourLevel.style.display = 'flex';
   } else {
-    const change__btnchangeddiv = document.getElementById('change__btnchangeddiv');
-    change__btnchangeddiv.classList.remove('nonvisible')
+    const change__btnchangeddiv = document.getElementById(
+      'change__btnchangeddiv'
+    );
+    change__btnchangeddiv.classList.remove('nonvisible');
   }
 }
 
@@ -70,7 +77,165 @@ document.getElementById('infoiconLevel').addEventListener('click', () => {
     1) Уровень 1 доступен при старте игры <br>
     2) Уровень 2 открывается после приглашения 10 рефералов<br>
     <i>на данном уровне открывается возможность обмена баллов на монеты</i><br>
-    3) Уровен 3 открывается после приглашения 20 рефералов <br>
+    3) Уровень 3 открывается после приглашения 20 рефералов <br>
    <i>на данном уровне открывается возможность стейкинга и вывода монет </i>   `;
   modal.classList.add('show');
 });
+
+
+const btnchange = document.getElementById('btnchange')
+
+btnchange.addEventListener('click', () => {
+    const walletInfo = document.getElementById('walletInfo');
+    
+    if (isSentWalletAdress == 'false') {
+        addWalletAddress()
+    } else {
+        addSum()
+
+    }
+})
+    
+        
+    function addWalletAddress(){
+
+        btnchange.style.display = 'none'
+
+        const textInfo = document.createElement('div');
+        textInfo.textContent = 'Укажите адрес вашего кошелька:';
+        textInfo.classList.add ('change__textInfo')
+      
+        const inputWalletAdress = document.createElement('input');
+        inputWalletAdress.classList.add('inputWalletAdress')
+
+        const btnNext = document.createElement('button');
+        btnNext.textContent='Далее >'
+        btnNext.classList.add ('change__btnchange')
+
+        walletInfo.appendChild(textInfo);
+        walletInfo.appendChild(inputWalletAdress);
+        walletInfo.appendChild(btnNext);
+    
+        btnNext.addEventListener('click',()=>{
+
+            if (inputWalletAdress.value == ''){
+              const epmtyInfo = document.createElement('div');
+              epmtyInfo.textContent = 'заполните адрес кошелка'
+              epmtyInfo.classList.add('epmtyInfo')
+
+              walletInfo.appendChild(epmtyInfo);
+              
+              setTimeout(()=>{
+                epmtyInfo.classList.add('nonvisible')  
+              },1500)
+
+            } else {
+              const walletAdress=inputWalletAdress.value;
+              textInfo.style.display = 'none'
+              inputWalletAdress.style.display = 'none'
+              btnNext.style.display = 'none'
+              addSum(walletAdress)
+            }
+    
+        })
+      
+    }
+
+   
+   
+   function addSum(walletAdress) {
+
+    btnchange.style.display = 'none'
+
+    const textInfo = document.createElement('div');
+    textInfo.textContent = 'Укажите cумму для обмена:';
+    textInfo.classList.add ('change__textInfo')
+  
+    const inputSum = document.createElement('input');
+    inputSum.classList.add('inputWalletAdress')
+
+    const btnNext = document.createElement('button');
+    btnNext.textContent='Далее >'
+    btnNext.classList.add ('change__btnchange')
+
+    walletInfo.appendChild(textInfo);
+    walletInfo.appendChild(inputSum);
+    walletInfo.appendChild(btnNext);
+
+
+    btnNext.addEventListener('click',()=>{
+
+      if (inputSum.value == ''){
+        const epmtyInfo = document.createElement('div');
+        epmtyInfo.textContent = 'заполните сумму'
+        epmtyInfo.classList.add('epmtyInfo')
+
+        walletInfo.appendChild(epmtyInfo);
+        
+        setTimeout(()=>{
+          epmtyInfo.classList.add('nonvisible')  
+        },1500)
+
+      } else {
+        const sumToChange=inputSum.value;
+        textInfo.style.display = 'none'
+        inputSum.style.display = 'none'
+        btnNext.style.display = 'none'
+        
+        const textInfo2 = document.createElement('div');
+        textInfo2.textContent = 'Запрос на обмен отправлен администраторам';
+        textInfo2.classList.add ('change__textInfo')
+        walletInfo.appendChild(textInfo2);
+
+      }
+
+  })
+        
+   }
+   
+   
+    
+     
+
+          
+
+
+       
+
+         
+
+          
+
+          
+  
+          
+  
+          // const inputSum = document.createElement('input');
+          // inputSum.classList.add('inputWalletAdress')
+  
+          // const btnNext2 = document.createElement('button');
+          // btnNext2.textContent='Далее >'
+          // btnNext2.classList.add ('change__btnchange')
+  
+          // walletInfo.appendChild(inputSum);
+          // walletInfo.appendChild(btnNext2);
+
+
+          //     btnNext2.addEventListener('click',()=>{
+
+          //       if (inputSum.value == ''){
+          //         const epmtyInfo = document.createElement('div');
+          //         epmtyInfo.textContent = 'заполните сумму баллов'
+          //         epmtyInfo.classList.add('epmtyInfo')
+        
+          //         walletInfo.appendChild(epmtyInfo);
+                  
+          //         setTimeout(()=>{
+          //           epmtyInfo.classList.add('nonvisible')  
+          //         },1500)
+
+          //   }})
+
+       
+
+ 
