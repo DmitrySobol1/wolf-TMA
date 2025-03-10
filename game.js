@@ -1,8 +1,10 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// const tlgid = 777
+// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+// window.Telegram.WebApp.enableClosingConfirmation()
 
-window.Telegram.WebApp.enableClosingConfirmation()
+const tlgid = 412697670
+
+
 
 
 let initialScore 
@@ -36,6 +38,9 @@ function getScore(){
         energy = Number(valueenergy)
 
         setWolfImg(initialScore)
+
+        const userLevel = document.getElementById('userLevel')
+        userLevel.textContent = localStorage.getItem('userLevel')
 
 }
 

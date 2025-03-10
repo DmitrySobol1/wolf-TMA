@@ -499,3 +499,20 @@ background: radial-gradient(circle,#1f1f1f, #161616);
     text-align: center;
 }
 
+.divUserLevel {
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    justify-content: cneter;
+    align-items: center;
+    gap:10px;
+    color: #848484;
+}
+.levelCircle {
+   background-color: #d49000; 
+   border-radius: 50%;
+}
+
+.wolfIcon {
+    width: 30px;
+    height: 30px;
+}
