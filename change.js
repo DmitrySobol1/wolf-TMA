@@ -1,7 +1,8 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// window.Telegram.WebApp.enableClosingConfirmation()
-const tlgid = 412697670;
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+window.Telegram.WebApp.enableClosingConfirmation()
+// const tlgid = 412697670;
+const currentScore = localStorage.getItem('score')
 
 
 const isSentWalletAdress = localStorage.getItem('isSentWalletAdress');
@@ -87,6 +88,23 @@ const btnchange = document.getElementById('btnchange')
 
 btnchange.addEventListener('click', () => {
     const walletInfo = document.getElementById('walletInfo');
+
+    if (currentScore <2500){
+      
+      const epmtyInfo = document.createElement('div');
+              epmtyInfo.textContent = 'минимальная сумма для обмена 2500'
+              epmtyInfo.classList.add('epmtyInfo')
+
+              walletInfo.appendChild(epmtyInfo);
+              
+              setTimeout(()=>{
+                epmtyInfo.classList.add('nonvisible')  
+              },1500)
+
+
+
+    } else{
+
     
     if (isSentWalletAdress == 'false') {
         addWalletAddress()
@@ -94,7 +112,7 @@ btnchange.addEventListener('click', () => {
         addSum()
 
     }
-})
+}})
     
         
     function addWalletAddress(){
@@ -143,7 +161,7 @@ btnchange.addEventListener('click', () => {
 
    
    
-   function addSum(walletAdress) {
+   function addSum(walletAdress = 'exist') {
 
     btnchange.style.display = 'none'
 
@@ -153,6 +171,7 @@ btnchange.addEventListener('click', () => {
   
     const inputSum = document.createElement('input');
     inputSum.classList.add('inputWalletAdress')
+    inputSum.type = 'number'
 
     const btnNext = document.createElement('button');
     btnNext.textContent='Далее >'
@@ -175,9 +194,24 @@ btnchange.addEventListener('click', () => {
         setTimeout(()=>{
           epmtyInfo.classList.add('nonvisible')  
         },1500)
+      } 
+        else if (inputSum.value % 2500 != 0){
+          const epmtyInfo = document.createElement('div');
+          epmtyInfo.textContent = 'число монет должно быть кратно 2500'
+          epmtyInfo.classList.add('epmtyInfo')
+  
+          walletInfo.appendChild(epmtyInfo);
+          
+          setTimeout(()=>{
+            epmtyInfo.classList.add('nonvisible')  
+          },1500)
 
-      } else {
-        const sumToChange=inputSum.value;
+
+      } 
+
+        else {
+        const sum = inputSum.value
+        // const sumToChange=inputSum.value;
         textInfo.style.display = 'none'
         inputSum.style.display = 'none'
         btnNext.style.display = 'none'
@@ -187,6 +221,22 @@ btnchange.addEventListener('click', () => {
         textInfo2.classList.add ('change__textInfo')
         walletInfo.appendChild(textInfo2);
 
+
+          fetch('https://api.directual.com/good/api/v5/data/rqsttoexchangeballtocoin/rqstToExchange?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=', {
+          method: 'POST',
+          
+          body: JSON.stringify({
+            'sum': sum,
+            'walletAdress': walletAdress,
+            'user_id': tlgid,
+            'isCoinSentByAdmin': false
+          }),
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          }).then(res=>{
+              console.log(res.json())
+          })
       }
 
   })
@@ -209,33 +259,4 @@ btnchange.addEventListener('click', () => {
           
   
           
-  
-          // const inputSum = document.createElement('input');
-          // inputSum.classList.add('inputWalletAdress')
-  
-          // const btnNext2 = document.createElement('button');
-          // btnNext2.textContent='Далее >'
-          // btnNext2.classList.add ('change__btnchange')
-  
-          // walletInfo.appendChild(inputSum);
-          // walletInfo.appendChild(btnNext2);
-
-
-          //     btnNext2.addEventListener('click',()=>{
-
-          //       if (inputSum.value == ''){
-          //         const epmtyInfo = document.createElement('div');
-          //         epmtyInfo.textContent = 'заполните сумму баллов'
-          //         epmtyInfo.classList.add('epmtyInfo')
-        
-          //         walletInfo.appendChild(epmtyInfo);
-                  
-          //         setTimeout(()=>{
-          //           epmtyInfo.classList.add('nonvisible')  
-          //         },1500)
-
-          //   }})
-
-       
-
  

@@ -1,6 +1,6 @@
 // // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-const tlgid = 412697670;
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+// const tlgid = 412697670;
 
 let tryQty = 0;
 
@@ -35,17 +35,25 @@ async function checkIfFirstEnter(tlgid, tryQty = 0) {
       // } else {
       //     window.location.href = "game.html";
       // }
+
+      
       const userLevel = data.payload[0].userLevel;
       localStorage.setItem('userLevel', userLevel);
-      
-      const isSentWalletAdress=data.payload[0].isSentWalletAdress
+
+      const isSentWalletAdress = data.payload[0].isSentWalletAdress;
       localStorage.setItem('isSentWalletAdress', isSentWalletAdress);
-      
-      const walletAdress=data.payload[0].walletAdress
+      console.log('isSentWalletAdress',isSentWalletAdress)
+
+      const walletAdress = data.payload[0].walletAdress;
       localStorage.setItem('walletAdress', walletAdress);
 
-
-      checkUserInfo(tlgid, data.payload[0].canRewriteEnergy,data.payload[0].isNeedPlusScore);
+      checkUserInfo(
+        tlgid,
+        data.payload[0].canRewriteEnergy,
+        data.payload[0].isNeedPlusScore,
+        data.payload[0].isNeedMinusScore,
+        data.payload[0].scoreShouldBeMinus,
+      );
     }
   } catch (error) {
     console.error('Ошибка запроса:', tryQty);
@@ -94,7 +102,7 @@ async function createNew(tlgid) {
   }
 }
 
-async function checkUserInfo(tlg, energy, score) {
+async function checkUserInfo(tlg, energy, score,minusScoreNeed,minusScoreQty) {
   const promises = [];
 
   if (energy === false) {
@@ -109,6 +117,14 @@ async function checkUserInfo(tlg, energy, score) {
     localStorage.setItem('score', newscore);
     promises.push(changeNeedPlusScore()); // Добавляем в массив промисов
     console.log('баллов добавил');
+  }
+
+  if (minusScoreNeed === true) {
+    const currentscore = localStorage.getItem('score');
+    let newscore = Number(currentscore) - Number(minusScoreQty);
+    localStorage.setItem('score', newscore);
+    promises.push(changeNeedMinusScore()); // Добавляем в массив промисов
+    console.log('баллы отнял');
   }
 
   await Promise.all(promises); // Дожидаемся выполнения всех запросов
@@ -148,6 +164,36 @@ async function changeNeedPlusScore() {
   try {
     const response = await fetch(
       'https://api.directual.com/good/api/v5/data/rqsttochangevariableisneedplusscore/rqstChangeNeedPlusScore?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          uid: tlgid,
+          isOperated: false,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Ошибка запроса: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    //   window.location.href = "game.html";
+  } catch (error) {
+    console.error('Ошибка при запросе:', error);
+  }
+}
+
+
+
+async function changeNeedMinusScore() {
+  try {
+    const response = await fetch(
+      'https://api.directual.com/good/api/v5/data/rqsttochangevariableisneedminusscore/rqstChangeNeedMinusScore?appID=b27175e7-b9eb-48bb-a207-e7b7e3c32835&sessionID=',
       {
         method: 'POST',
         body: JSON.stringify({

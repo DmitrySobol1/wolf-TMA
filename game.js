@@ -1,8 +1,8 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// window.Telegram.WebApp.enableClosingConfirmation()
+const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+window.Telegram.WebApp.enableClosingConfirmation()
 
-const tlgid = 412697670;
+// const tlgid = 412697670;
 
 let initialScore;
 let energy;
