@@ -1,9 +1,19 @@
 // В проде раскоментировать получитение id из тлг и убрать ручной ввод
-const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
-// const tlgid = 412697670
+// const tlgid = window.Telegram.WebApp.initDataUnsafe.user.id
+window.Telegram.WebApp.enableClosingConfirmation()
+
+const tlgid = 412697670
 let reflink
 
-window.Telegram.WebApp.enableClosingConfirmation()
+
+setLevel();
+
+function setLevel() {
+  const userLevel = document.getElementById('userLevel');
+  userLevel.textContent = localStorage.getItem('userLevel');
+}
+
+
 
 reflinkmaker()
 
@@ -91,7 +101,11 @@ function getMyReferalls() {
         friend__listdiv_items.innerHTML = array
         .map((e,index) => `<div>${index+1}. ${e.referalName}</div><hr class="friend__hr">`)
         .join('');
+
+
         })
+        
+        
 
         .catch(error => {
             console.error("Ошибка при запросе:", error); // Ловим и выводим ошибки
