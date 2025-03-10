@@ -52,3 +52,18 @@ document.addEventListener('click', function (event) {
     modal.classList.remove('show');
   }
 });
+
+
+
+// Info btn в разделе уровня
+document.getElementById('infoiconLevel').addEventListener('click', () => {
+  document.getElementById('modaltitle').textContent = 'Система уровней';
+  document.getElementById('modaldescription').innerHTML =
+    `Приглашайте друзей и повышайте свой уровень: <br>
+    1) Уровень 1 доступен при старте игры <br>
+    2) Уровень 2 открывается после приглашения 10 рефералов<br>
+    <i>на данном уровне открывается возможность обмена баллов на монеты</i><br>
+    3) Уровен 3 открывается после приглашения 20 рефералов <br>
+   <i>на данном уровне открывается возможность стейкинга и вывода монет </i>   `;
+  modal.classList.add('show');
+});
